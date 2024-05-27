@@ -39,6 +39,6 @@ public class DefaultCountingOutRhymer {
     }
 
     public int[] getNUMBERS() {
-        return NUMBERS;
+        return numbers;
     }
 }
