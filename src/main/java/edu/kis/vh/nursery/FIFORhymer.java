@@ -1,21 +1,36 @@
 package edu.kis.vh.nursery;
 
-public class FIFORhymer extends defaultCountingOutRhymer {
+/**
+ * Klasa FifoRhymer implementuje liczenie w stylu FIFO (First In First Out).
+ * Klasa rozszerza DefaultCountingOutRhymer.
+ */
+public class FIFORhymer extends DefaultCountingOutRhymer {
 
-    public defaultCountingOutRhymer temp = new defaultCountingOutRhymer();
-    
+    private final DefaultCountingOutRhymer temp = new DefaultCountingOutRhymer();
+
+    /**
+     * Nadpisuje metodę countOut, aby zaimplementować FIFO.
+     * Metoda zwraca pierwszy element element  lub -1 jesli licznik jest pusty
+     */
     @Override
-    public int countOut() {
+    protected int countOut() {
         while (!callCheck())
             
-        temp.countIn(super.countOut());
+            temp.countIn(super.countOut());
         
         int ret = temp.countOut();
         
         while (!temp.callCheck())
             
-        countIn(temp.countOut());
+            countIn(temp.countOut());
         
         return ret;
+    }
+
+    /**
+     * Zwraca tymczasowy licznik użyty do operacji FIFO.
+     */
+    public DefaultCountingOutRhymer getTemp() {
+        return temp;
     }
 }
